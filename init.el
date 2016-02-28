@@ -11,7 +11,7 @@
   (package-install 'use-package))
 
 ;;;;
-;; Packages I use
+;; Packages
 ;;;;
 
 (use-package paredit
@@ -53,50 +53,25 @@
   :config
   (setq yas-snippet-dirs '("~/.emacs.d/snippets")))
 
+;; Add a directory to our load path, so when you `load` things below,
+;; emacs knows where to look for the corresponding file.
+(add-to-list 'load-path "~/.emacs.d/customizations")
+
 ;;;;
 ;; Customizations
 ;;;;
 
-;; These customizations change the way emacs looks and disable/enable
-;; some user interface elements
-(tool-bar-mode -1)
-(scroll-bar-mode -1)
-(menu-bar-mode -1)
-(ido-mode t)
-(setq frame-resize-pixelwise t)
+;; User interface elements
+(load "ui.el")
 
-(global-set-key (kbd "C-x C-g") 'deft)
-
-(custom-set-faces
- '(default ((t
-	     (:family "Source Code Pro" :foundry "ADBO" :slant normal :weight semi-bold :height 105 :width normal)))))
+;; These customizations make editing a bit nicer
+(load "editing")
 
 ;; Org mode customizations
+(load "org.el")
 
-(global-set-key "\C-cl" 'org-store-link)
-(global-set-key "\C-ca" 'org-agenda)
-(global-set-key "\C-cc" 'org-capture)
-(global-set-key "\C-cb" 'org-iswitchb)
+;; Hard to categorize customizations
+(load "misc.el")
 
-(setq org-directory "~/.org")
-(setq org-default-notes-file "~/.org/refile.org")
-
-(setq org-agenda-files (list
-			"~/.org/todo.org"
-			"~/.org/tutorials.org"
-			"~/.org/courses.org"
-			"~/.org/books.org"
-			"~/.org/english.org"
-			"~/.org/handmade.org"))
-
-;;;;
 ;; Language specific
-;;;;
-
-;; For editing c/c++
-(defun abautista-c-mode-common-hook()
-  (setq tab-width 4
-	indent-tabs-mode nil)
-  (setq c-basic-offset 4))
-
-(add-hook 'c-mode-common-hook 'abautista-c-mode-common-hook)
+(load "languages.el")
