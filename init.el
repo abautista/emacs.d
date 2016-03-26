@@ -68,10 +68,11 @@
 (load "editing")
 
 ;; Org mode customizations
-(load "org.el")
+(load "org-customizations.el")
 
 ;; Hard to categorize customizations
 (load "misc.el")
 
 ;; Language specific
 (load "languages.el")
+
