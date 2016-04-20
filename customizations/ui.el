@@ -10,4 +10,4 @@
 
 (custom-set-faces
  '(default ((t
-	     (:family "Source Code Pro" :foundry "ADBO" :slant normal :weight semi-bold :height 105 :width normal)))))
+	     (:family "Source Code Pro" :foundry "ADBO" :slant normal :height 105 :width normal)))))
